@@ -5,7 +5,6 @@ public class Main {
    public static void main(String[] args) {
        Scanner sc = new Scanner(Main.class.getResourceAsStream("enrollment.txt"));
        Map<String, Integer> enroll = new LinkedHashMap<>();
-       Map<String, Integer> check = new LinkedHashMap<>();
        List<String> not = new ArrayList<>(); 
        int reject = 0;
 
@@ -32,9 +31,7 @@ public class Main {
                 reject++;
             }
         } else {
-            if(enroll.containsKey(course)){
-                check.get(course);
-            } else {
+            if(!enroll.containsKey(course)){
                 not.add(course);
                 reject++;
             }
@@ -43,8 +40,10 @@ public class Main {
        sc.close();
 
        System.out.println("===== Enrollment Checks =====");
-        for(String c : check.keySet()){
-            System.out.println(c + ": " + check.get(c) + " students");
+        for(String c : enroll.keySet()){
+            if(enroll.containsKey(c)){
+            System.out.println(c + ": " + enroll.get(c) + " students");
+            }
         }
         for(String n : not){
             System.out.println(n + ": Not Found");
