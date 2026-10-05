@@ -54,6 +54,7 @@ public class Main {
             for(String course : enroll.keySet()){
                 System.out.println(course + ": " + enroll.get(course) + " students");
             }
+        System.out.println();
        System.out.println("Rejected operations: " + reject);
    } 
 }
